@@ -20,13 +20,10 @@
 
 ````
 
----
-
 ## 🧠 Objective
 
 Recover the password used to encrypt the Ansible Vault file in order to retrieve the flag.
 
----
 
 ## 🛠️ Tools Used
 
@@ -34,8 +31,6 @@ Recover the password used to encrypt the Ansible Vault file in order to retrieve
 - `ansible2john` (from [John the Ripper jumbo edition](https://github.com/openwall/john))
 - `hashcat` (for GPU-accelerated cracking)
 - `rockyou.txt` wordlist
-
----
 
 ## 🔍 Steps to Solve
 
@@ -55,8 +50,6 @@ $ANSIBLE_VAULT;1.1;AES256
 
 → Confirmed: This is an **Ansible Vault** file encrypted with AES256.
 
----
-
 ### 2. Convert Vault File to Hashcat Format
 
 ```bash
@@ -68,8 +61,6 @@ Output:
 ```bash
 $ansible$0*0*<salt>*<HMAC>*<ciphertext>
 ```
-
----
 
 ### 3. Crack the Vault Password with Hashcat
 
@@ -85,8 +76,6 @@ After a few minutes:
 Hash Cracked: zebracakes
 ```
 
----
-
 ## 🏁 Flag
 
 ```
@@ -94,20 +83,13 @@ zebracakes
 ```
 
 Use this password to decrypt the vault and retrieve the content if needed.
-
----
-
 ## 📚 Notes
 
 * Hashcat mode **16900** is specific for Ansible Vaults.
 * Make sure `hashcat` has GPU support properly configured for optimal speed.
 * Always preprocess targets with `ansible2john` before cracking.
 
----
 
-
-
-Dưới đây là nội dung writeup bằng tiếng Anh, theo chuẩn định dạng `README.md` dành cho GitHub, trình bày quá trình phân tích và bẻ khóa hash trong bài tập CTF thuộc mảng `password_cracking`:
 
 ---
 
