@@ -101,13 +101,11 @@ zebracakes
 
 You're given the following hash and a salt:
 
-- **Hash**:
+>- **Hash**: d8e5d901a23c7d3023eedf501b626bfdc4a3b243635491e6d2abd39c0ec7cf9dff0c677383a7558e066d1417b08a3311d0ebcdc5f8b9f219477839dcb0ebfbfe
 
-d8e5d901a23c7d3023eedf501b626bfdc4a3b243635491e6d2abd39c0ec7cf9dff0c677383a7558e066d1417b08a3311d0ebcdc5f8b9f219477839dcb0ebfbfe
+>- **Salt**: `PunkCTF2025`
 
-- **Salt**: `PunkCTF2025`
-
-📝 **Note**: The flag is the cracked password.
+>📝 **Note**: The flag is the cracked password.
 
 
 ![Password Cracking - 3](/Password_Cracking!/Password-Cracking_3/Screenshot%202025-05-06%20012551.png)
@@ -213,9 +211,9 @@ zanyzebra9
 
 # 🔐 Password Cracking - 4
 
-**Points**: 20
-**Category**: Password Cracking
-**Challenge Description**:
+>**Points**: 20
+>**Category**: Password Cracking
+>**Challenge Description**:
 You are given a password hash in the format used by `/etc/shadow`. Your task is to recover the original password (the flag).
 
 
@@ -300,9 +298,9 @@ Here’s the `README.md`-style write-up in English for **Password Cracking - 5 (
 
 # 🔐 Password Cracking - 5
 
-**Points**: 20
-**Category**: Password Cracking
-**Challenge Description**:
+>**Points**: 20
+>**Category**: Password Cracking
+>**Challenge Description**:
 You are given a password hash. Your task is to determine the plaintext password corresponding to this hash.
 
 
