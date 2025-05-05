@@ -1,3 +1,4 @@
+```bash 
 ┌──(kali㉿kali)-[~/CTF/DevOps/password_cracking]
 └─$ strings vault\?token=eyJ1c2VyX2lkIjo0MjMsInRlYW1faWQiOjI3MiwiZmlsZV9pZCI6Mn0.aBdJJA.byv2j8mtkuf1HqdNmdzql-iE19Q 
 $ANSIBLE_VAULT;1.1;AES256
@@ -41,3 +42,5 @@ Restore.Sub.#1...: Salt:0 Amplifier:0-1 Iteration:9216-9999
 Candidate.Engine.: Device Generator
 Candidates.#1....: 111813 -> yobabz
 Hardware.Mon.#1..: Util: 50%
+
+```
