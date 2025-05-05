@@ -1,20 +1,20 @@
 
----
 
-```markdown
+
+
 # 🔐 Password Cracking - 1 (20 points)
 
 > **Category:** DevOps / Crypto  
 > **Description:**  
 > The flag is the password for this Ansible Vault file.
 
----
+
 
 ## 📁 Challenge Files
 
 - `vault?token=...` (downloaded file, actually an Ansible Vault file)
 - Contains ASCII header:
-```
+
 
 \$ANSIBLE\_VAULT;1.1;AES256
 
