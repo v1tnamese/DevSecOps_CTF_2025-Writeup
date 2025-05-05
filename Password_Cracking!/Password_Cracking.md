@@ -7,7 +7,7 @@
 > **Category:** DevOps / Crypto  
 > **Description:**  
 > The flag is the password for this Ansible Vault file.
-![Password Cracking - 1](/DevSecOps/DevSecOps_CTF_2025-Writeup/Password_Cracking!/Password-Cracking_1/Screenshot%202025-05-06%20011840.png)
+![Password Cracking - 1](/Password_Cracking!/Password-Cracking_1/Screenshot%202025-05-06%20011840.png)
 
 
 
