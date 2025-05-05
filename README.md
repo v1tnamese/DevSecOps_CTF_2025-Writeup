@@ -111,9 +111,12 @@ Dưới đây là nội dung writeup bằng tiếng Anh, theo chuẩn định d�
 
 ---
 
+
+
+---
+
 # 🔐 Password Cracking - HMAC-SHA512
 
-This challenge focuses on identifying and cracking a hash using tools like `hashid`, `hash-identifier`, and `hashcat`. The hash provided turned out to be an **HMAC-SHA512**, which we successfully cracked using a custom wordlist and rule-based mutation.
 
 ## 🧩 Challenge Description
 
