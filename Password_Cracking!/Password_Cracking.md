@@ -211,12 +211,10 @@ zanyzebra9
 
 # 🔐 Password Cracking - 4
 
->**Points**: 20
->**Category**: Password Cracking
+>- **Points**: 20
+>- **Category**: Password Cracking
 >**Challenge Description**:
 You are given a password hash in the format used by `/etc/shadow`. Your task is to recover the original password (the flag).
-
-
 
 ![Password Cracking - 4](/Password_Cracking!/Password-Cracking_4/Screenshot%202025-05-06%20012442.png)
 
@@ -298,8 +296,8 @@ Here’s the `README.md`-style write-up in English for **Password Cracking - 5 (
 
 # 🔐 Password Cracking - 5
 
->**Points**: 20
->**Category**: Password Cracking
+>- **Points**: 20
+>- **Category**: Password Cracking
 >**Challenge Description**:
 You are given a password hash. Your task is to determine the plaintext password corresponding to this hash.
 
