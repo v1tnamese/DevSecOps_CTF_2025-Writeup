@@ -82,7 +82,6 @@ Hash Cracked: zebracakes
 zebracakes
 ```
 
-Use this password to decrypt the vault and retrieve the content if needed.
 ## 📚 Notes
 
 * Hashcat mode **16900** is specific for Ansible Vaults.
@@ -97,127 +96,121 @@ Use this password to decrypt the vault and retrieve the content if needed.
 
 ---
 
-# 🔐 Password Cracking - HMAC-SHA512
+Dưới đây là nội dung writeup định dạng `README.md` bằng tiếng Anh theo đúng yêu cầu kỹ thuật cho challenge **Password Cracking - 3 (20 points)**:
 
+---
 
-## 🧩 Challenge Description
+# 🔐 Password Cracking - 3 (20 points)
 
-You are given a single hash and asked to find the password and salt used to generate it. 
+## Challenge Description
 
-Given hash:
+You're given the following hash and a salt:
+
+- **Hash**:
 
 d8e5d901a23c7d3023eedf501b626bfdc4a3b243635491e6d2abd39c0ec7cf9dff0c677383a7558e066d1417b08a3311d0ebcdc5f8b9f219477839dcb0ebfbfe
 
 ````
+- **Salt**: `PunkCTF2025`
 
-## 🔍 Step 1: Identify the Hash Type
+📝 **Note**: The flag is the cracked password.
 
-We started by using two common hash identification tools:
+## 🔎 Step-by-Step Solution
 
-### Using `hashid`:
+### 1. Hash Type Identification
+
+We first identify the hash type using tools like `hashid` and `hash-identifier`:
+
 ```bash
-hashid 'd8e5...fbfe'
+$ hashid <hash>
 ````
 
-Output:
+**Result**:
 
 ```
-[+] SHA-512 
-[+] Whirlpool 
-[+] Salsa10 
-[+] Salsa20 
-[+] SHA3-512 
-[+] Skein-512 
-[+] Skein-1024(512)
+[+] SHA-512
+[+] Whirlpool
+...
 ```
 
-### Using `hash-identifier`:
+This suggests a SHA-512 based hash, possibly HMAC.
 
 ```bash
-hash-identifier 'd8e5...fbfe'
+$ hash-identifier <hash>
 ```
 
-Output:
+**Result**:
 
 ```
 Possible Hashs:
 [+] SHA-512
 [+] Whirlpool
-
 Least Possible Hashs:
 [+] SHA-512(HMAC)
 [+] Whirlpool(HMAC)
 ```
 
-## 🧠 Step 2: Find Hashcat Mode
+The result confirms it's very likely to be **HMAC-SHA512**.
 
-To confirm this is an **HMAC-SHA512**, we searched for supported hash modes using:
+
+### 2. Matching Hashcat Mode
+
+We search Hashcat's help menu for salt-based SHA-512 variants:
 
 ```bash
-hashcat --help | grep '512' | grep 'salt'
+$ hashcat --help | grep '512' | grep 'salt'
 ```
 
-We determined the hash mode to be:
+Relevant match:
 
 ```
 1760 | HMAC-SHA512 (key = $salt)
 ```
 
-## 🧨 Step 3: Crack the Hash with Hashcat
+We'll proceed with Hashcat mode `1760`.
 
-We assumed the format used in the hash file is:
 
-```
-<hash>:<salt>
-```
+### 3. Hash Cracking
 
-We placed the target hash and salt (`PunkCTF2025`) in `crack3.txt` in the format required by hashcat:
+We prepare our inputs:
 
-```
-d8e5...fbfe:PunkCTF2025
-```
+* **Wordlist**: `zebra_rockyou.txt` (custom wordlist)
+* **Rules**: `best64.rule`
+* **Hash** file: `crack3.txt` (contains only the hash)
 
-Then we ran the following command:
+Run Hashcat:
 
 ```bash
-hashcat -m 1760 -a 0 -w 3 -r /usr/share/hashcat/rules/best64.rule crack3.txt zebra_rockyou.txt
+$ hashcat -m 1760 -a 0 -w 3 -r /usr/share/hashcat/rules/best64.rule crack3.txt zebra_rockyou.txt
 ```
 
-### Parameters:
+**Output**:
 
-* `-m 1760`: Specifies HMAC-SHA512 with salt as key.
-* `-a 0`: Straight attack mode.
-* `-r best64.rule`: Applies mutation rules.
-* `zebra_rockyou.txt`: Custom wordlist based on zebra-themed passwords.
-
-## ✅ Result
-
-```bash
-Status...........: Cracked
-Hash.Mode........: 1760 (HMAC-SHA512 (key = $salt))
-Hash.Target......: d8e5...fbfe:PunkCTF2025
+```
+...
 Recovered........: 1/1 (100.00%)
-Candidates.......: zebras -> *as**a
-Password.........: zanyzebra9
-Salt.............: PunkCTF2025
+Hash.............: d8e5...fbfe:PunkCTF2025:zanyzebra9
+...
 ```
 
-## 🧠 Lessons Learned
 
-* `hashid` and `hash-identifier` are useful for narrowing down possible hash types.
-* Always consider HMAC when SHA-512 is suggested with a salt.
-* Hashcat mode 1760 (`HMAC-SHA512 (key = $salt)`) works with format `hash:salt`.
-* Rule-based cracking (`best64.rule`) improves success rate significantly.
+## 🏁 Flag
 
-## 🛠️ Tools Used
+```
+zanyzebra9
+```
 
-* [`hashid`](https://github.com/psypanda/hashID)
-* [`hash-identifier`](https://github.com/blackploit/hash-identifier)
-* [`hashcat`](https://github.com/hashcat/hashcat)
 
-## 📁 Files
 
-* `crack3.txt`: contains the hash and salt
-* `zebra_rockyou.txt`: custom password list
-* `best64.rule`: mutation rules for hashcat
+## 🔧 Tools Used
+
+* [Hashcat](https://hashcat.net/hashcat/)
+* `hashid` / `hash-identifier`
+* Wordlist: Custom `zebra_rockyou.txt`
+* Ruleset: `best64.rule`
+
+```
+
+---
+
 
