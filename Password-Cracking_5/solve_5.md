@@ -1,3 +1,4 @@
+```bash
 ┌──(kali㉿kali)-[~/CTF/DevOps/password_cracking]
 └─$ hashid '92d7dcb3b27551277307d46856325798'                                                                          
 Analyzing '92d7dcb3b27551277307d46856325798'
@@ -33,3 +34,4 @@ Press 'q' or Ctrl-C to abort, almost any other key for status
 Use the "--show --format=Raw-MD5" options to display all of the cracked passwords reliably
 Session completed. 
                            
+```

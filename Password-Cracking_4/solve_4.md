@@ -1,3 +1,4 @@
+```bash
 ┌──(kali㉿kali)-[~/CTF/DevOps/password_cracking]
 └─$ echo '$6$Q9/shQzQf6xlQyKr$bfHWQDlkwfvrJTBU0itN6kJeyEwQKfvviQ3buIDDNG1S/77a52unKnEssSw340AOMoGzUiyQ.l60wfho28Ay41' > crack4.txt
 
@@ -18,3 +19,5 @@ No password hashes left to crack (see FAQ)
 ?:pinkzebra
 
 1 password hash cracked, 0 left
+
+```

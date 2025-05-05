@@ -1,3 +1,4 @@
+```bash
 ┌──(kali㉿kali)-[~/CTF/DevOps/password_cracking]
 └─$ hashid 'd8e5d901a23c7d3023eedf501b626bfdc4a3b243635491e6d2abd39c0ec7cf9dff0c677383a7558e066d1417b08a3311d0ebcdc5f8b9f219477839dcb0ebfbfe'
 Analyzing 'd8e5d901a23c7d3023eedf501b626bfdc4a3b243635491e6d2abd39c0ec7cf9dff0c677383a7558e066d1417b08a3311d0ebcdc5f8b9f219477839dcb0ebfbfe'
@@ -68,3 +69,4 @@ Restore.Sub.#1...: Salt:0 Amplifier:0-77 Iteration:0-77
 Candidate.Engine.: Device Generator
 Candidates.#1....: zebras -> *as**a
 Hardware.Mon.#1..: Util: 29%
+```
