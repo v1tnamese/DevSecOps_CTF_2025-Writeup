@@ -284,3 +284,116 @@ john --show --format=sha512crypt crack4.txt
 * [`hashid`](https://github.com/psypanda/hashID) – to identify the hash type.
 * [`john`](https://www.openwall.com/john/) – for password cracking.
 * `rockyou.txt` – classic wordlist from Kali Linux.
+
+Here’s the `README.md`-style write-up in English for **Password Cracking - 5 (20 points)**, following GitHub markdown format:
+
+---
+---
+
+# 🔐 Password Cracking - 5
+
+**Points**: 20
+**Category**: Password Cracking
+**Challenge Description**:
+You are given a password hash. Your task is to determine the plaintext password corresponding to this hash.
+
+---
+
+## 🧩 Challenge Details
+
+**Hash:**
+
+```
+92d7dcb3b27551277307d46856325798
+```
+
+This is a hexadecimal string typical of several hashing algorithms. We need to identify the correct one to proceed.
+
+
+## 🔍 Step-by-Step Solution
+
+### 🔹 Step 1: Identify the Hash Type
+
+We use `hashid` to analyze the given hash:
+
+```bash
+hashid '92d7dcb3b27551277307d46856325798'
+```
+
+**Output:**
+
+```
+[+] MD2
+[+] MD5
+[+] MD4
+[+] Double MD5
+[+] LM
+[+] RIPEMD-128
+[+] Haval-128
+[+] Tiger-128
+[+] Skein-256(128)
+[+] Skein-512(128)
+[+] Lotus Notes/Domino 5
+[+] Skype
+[+] Snefru-128
+[+] NTLM
+[+] Domain Cached Credentials
+[+] Domain Cached Credentials 2
+[+] DNSSEC(NSEC3)
+[+] RAdmin v2.x
+```
+
+✅ The hash is **likely MD5** (based on its length: 32 hex characters) — we proceed assuming it's a raw MD5 hash.
+
+
+### 🔹 Step 2: Prepare the Hash File
+
+Save the hash into a file named `crack5.txt`:
+
+```bash
+echo '92d7dcb3b27551277307d46856325798' > crack5.txt
+```
+
+### 🔹 Step 3: Crack the Hash Using John the Ripper
+
+Run `john` using the `raw-md5` format with the `rockyou.txt` wordlist:
+
+```bash
+john --format=raw-md5 --wordlist=/usr/share/wordlists/rockyou.txt crack5.txt
+```
+
+**Output:**
+
+```
+Loaded 1 password hash (Raw-MD5 [MD5 128/128 AVX 4x3])
+3greenzebras     (?)     
+Session completed.
+```
+
+John successfully finds the matching password: `3greenzebras`.
+
+### 🔹 Step 4: Confirm the Result
+
+Use `john --show` to display the cracked hash:
+
+```bash
+john --show --format=raw-md5 crack5.txt
+```
+
+**Output:**
+
+```
+92d7dcb3b27551277307d46856325798:3greenzebras
+```
+
+## 🏁 Flag
+
+```
+3greenzebras
+```
+
+## 🛠️ Tools Used
+
+* [`hashid`](https://github.com/psypanda/hashID) – to identify potential hash algorithms.
+* [`john`](https://www.openwall.com/john/) – to perform the password cracking.
+* `rockyou.txt` – commonly used wordlist in password cracking challenges.
