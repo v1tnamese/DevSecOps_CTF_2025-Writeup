@@ -9,7 +9,11 @@
 ---
 # Web
 
+- [Web - WriteUp](/Web/Web.md)
+
 ---
 # AI
+
+- [AI Guardrails!- WriteUp](AI_Guardrails/AI_Guardrails.md)
 
 ---
