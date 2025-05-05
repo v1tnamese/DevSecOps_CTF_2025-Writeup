@@ -92,12 +92,6 @@ zebracakes
 
 ---
 
-
-
----
-
-Dưới đây là nội dung writeup định dạng `README.md` bằng tiếng Anh theo đúng yêu cầu kỹ thuật cho challenge **Password Cracking - 3 (20 points)**:
-
 ---
 
 # 🔐 Password Cracking - 3 (20 points)
@@ -209,8 +203,84 @@ zanyzebra9
 * Wordlist: Custom `zebra_rockyou.txt`
 * Ruleset: `best64.rule`
 
-```
 
 ---
+---
+
+# 🔐 Password Cracking - 4
+
+**Points**: 20
+**Category**: Password Cracking
+**Challenge Description**:
+You are given a password hash in the format used by `/etc/shadow`. Your task is to recover the original password (the flag).
 
 
+## 🧩 Challenge Details
+
+**Hash:**
+
+```
+$6$Q9/shQzQf6xlQyKr$bfHWQDlkwfvrJTBU0itN6kJeyEwQKfvviQ3buIDDNG1S/77a52unKnEssSw340AOMoGzUiyQ.l60wfho28Ay41
+```
+
+This hash uses the **SHA-512 Crypt** format (common on Unix/Linux systems), as indicated by the `$6$` prefix.
+
+
+## 🔍 Step-by-Step Solution
+
+### 🔹 Step 1: Identify the Hash Type
+
+We use `hashid` to confirm the hash type.
+
+```bash
+hashid '$6$Q9/shQzQf6xlQyKr$bfHWQDlkwfvrJTBU0itN6kJeyEwQKfvviQ3buIDDNG1S/77a52unKnEssSw340AOMoGzUiyQ.l60wfho28Ay41'
+```
+
+**Result:**
+
+```
+[+] SHA-512 Crypt
+```
+
+✅ Confirmed: This is a Linux SHA512-crypt hash.
+
+
+### 🔹 Step 2: Crack the Hash Using John the Ripper
+
+We save the hash into a file called `crack4.txt`:
+
+```bash
+echo '$6$Q9/shQzQf6xlQyKr$bfHWQDlkwfvrJTBU0itN6kJeyEwQKfvviQ3buIDDNG1S/77a52unKnEssSw340AOMoGzUiyQ.l60wfho28Ay41' > crack4.txt
+```
+
+Run John with the correct format (`sha512crypt`) and a popular wordlist (`rockyou.txt`):
+
+```bash
+john --format=sha512crypt --wordlist=/usr/share/wordlists/rockyou.txt crack4.txt
+```
+
+John successfully cracks the password!
+
+
+### 🔹 Step 3: Retrieve the Cracked Password
+
+To view the cracked password:
+
+```bash
+john --show --format=sha512crypt crack4.txt
+```
+
+**Output:**
+
+```
+?:pinkzebra
+```
+
+✅ Cracked Password (Flag): `pinkzebra`
+
+
+## 🛠️ Tools Used
+
+* [`hashid`](https://github.com/psypanda/hashID) – to identify the hash type.
+* [`john`](https://www.openwall.com/john/) – for password cracking.
+* `rockyou.txt` – classic wordlist from Kali Linux.
