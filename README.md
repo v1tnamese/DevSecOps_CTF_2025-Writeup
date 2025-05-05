@@ -14,6 +14,6 @@
 ---
 # AI
 
-- [AI Guardrails!- WriteUp](AI_Guardrails/AI_Guardrails.md)
+- [AI Guardrails!- WriteUp](/AI_Guardrails/AI_Guardrails.md)
 
 ---
